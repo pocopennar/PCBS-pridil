@@ -25,9 +25,9 @@ Elle pourra eventuellement être utilisée comme variable pour la détermination
 def choix():
     action = input("Souhaitez vous coopérer (a) ou trahir (p) :") 
     if action == 'a' :
-        return 1
+        return 'C'
     elif action == 'p' :
-        return 0
+        return 'T'
     else  :
         print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
         choix()

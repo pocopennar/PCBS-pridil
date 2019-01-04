@@ -33,6 +33,22 @@ def choix():
         choix()
  </code></pre>
  
+ ### Calcul des gains : fonction gains()
  
+ Prend en paramètre l'action choisie par le joueur, celle du PV et applique en fonction de ces derniers, la matrice des gains pour faire évoluer les scores.
  
- 
+ <pre><code>
+def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) : 
+    if ActionJ== 'C' and ActionPV== 'C' :
+        scoreJ += GainC
+        scorePV += GainC
+    if ActionJ== 'C' and ActionPV== 'T':
+        scoreJ += PerteC
+        scorePV += GainT
+    if ActionJ== 'T' and ActionPV== 'C' :
+        scoreJ += GainT
+        scorePV += PerteC
+    if ActionJ== 'T' and ActionPV== 'T':
+        scoreJ += PerteT
+        scorePV += PerteT
+ </code></pre>

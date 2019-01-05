@@ -15,6 +15,7 @@ L'objectif serait d'observer les variations du comportement des utilisateurs en 
 
 _On a fait le choix de pré-définir des fonctions plutôt que d'utiliser des procédures avec d'éventuelles variables globales. La section présente expose donc l'esprit et la formalisation des fonctions qui serviront de base à un programme permettant de jouer un dilemme du prisonnier face à un PV jouant une stratégie 'Tit-for-Tat'._
 
+
 ### Action du joueur : fonction choix()
 
 La fonction choix() doit demander au joueur de choisir entre les deux options : coopérer ou trahir.
@@ -51,4 +52,22 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
     if ActionJ== 'T' and ActionPV== 'T':
         scoreJ += PerteT
         scorePV += PerteT
+ </code></pre>
+ 
+ ## Déroulement du jeu
+ 
+ <pre><code>
+# bloc de paramétrage     
+print("Vous allez maintenant paramétrer le dilemme du prisonnier.")
+GainC = input("Choisir le montant du gain de chaque partenaire si les deux partenaires coopérent : " )
+GainT =input("Choisir le montant du gain du partenaire qui trahit si l'autre coopère : " )
+PerteC =input("Choisir le montant de la perte du partenaire qui coopère si l'autre trahit : " )
+PerteT =input("Choisir le montant de la perte de chaque partenaire si les deux partenaires trahisent : " )
+Nbtours = input("Choisir le nombre de tours de jeu : "))
+scoreJ = 0 #Score du Joueur, nul au début du jeu
+scorePV = 0 #Score du partenaire Virtuel, nul au début du jeu
+n = 0 #indice des tours
+
+# début du jeu
+
  </code></pre>

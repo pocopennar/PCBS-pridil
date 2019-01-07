@@ -59,9 +59,20 @@ GainT =input("Choisir le montant du gain du partenaire qui trahit si l'autre coo
 PerteC =input("Choisir le montant de la perte du partenaire qui coopère si l'autre trahit : " )
 PerteT =input("Choisir le montant de la perte de chaque partenaire si les deux partenaires trahisent : " )
 Nbtours = input("Choisir le nombre de tours de jeu : "))
-scores = (0,0) #Scores du Joueur et du partenaire Virtuel, nuls au début du jeu
+scoreJ = 0 #Score du Joueur, nul au début du jeu
+scorePV = 0 #Score du partenaire Virtuel, nul au début du jeu
 n = 0 #indice des tours
 
 # début du jeu
+while n < Nbtours :
+    n+=1
+    ActionJ = choix()
+    scoreJ+= gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT)[0]
+    scorePV += gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT)[1]
+    ActionPV = ActionJ
+    print("Score du joueur = ", scoreJ, " Score du partenaire = ", scorePV)
+print("Scores finaux : Joueur : ", scoreJ,"  Partenaire : ", scorePV)
+print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l'expérimentateur.")
+
 
  </code></pre>

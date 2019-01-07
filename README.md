@@ -19,7 +19,7 @@ _On a fait le choix de pré-définir des fonctions plutôt que d'utiliser des pr
 ### Action du joueur : fonction choix()
 
 La fonction choix() doit demander au joueur de choisir entre les deux options : coopérer ou trahir.
-Ce choix détemrinera le retour d'une valeur utilisée pour le calcul de l'attribution des points.
+Ce choix déterminera le retour d'une valeur utilisée pour le calcul de l'attribution des points.
 Elle pourra eventuellement être utilisée comme variable pour la détermination de l'action future du PV.
 
 <pre><code>
@@ -40,18 +40,14 @@ def choix():
  
  <pre><code>
 def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) : 
-    if ActionJ== 'C' and ActionPV== 'C' :
-        scoreJ += GainC
-        scorePV += GainC
+     if ActionJ== 'C' and ActionPV== 'C' :
+        return (GainC, GainC)
     if ActionJ== 'C' and ActionPV== 'T':
-        scoreJ += PerteC
-        scorePV += GainT
+        return (PerteC, GainT)
     if ActionJ== 'T' and ActionPV== 'C' :
-        scoreJ += GainT
-        scorePV += PerteC
+        return (GainT, PerteC)
     if ActionJ== 'T' and ActionPV== 'T':
-        scoreJ += PerteT
-        scorePV += PerteT
+        return (PerteT, PerteT)
  </code></pre>
  
  ## Déroulement du jeu

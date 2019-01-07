@@ -71,6 +71,8 @@ while n < Nbtours :
     scorePV += gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT)[1]
     ActionPV = ActionJ
     print("Score du joueur = ", scoreJ, " Score du partenaire = ", scorePV)
+    
+# fin du jeu
 print("Scores finaux : Joueur : ", scoreJ,"  Partenaire : ", scorePV)
 print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l'expérimentateur.")
 

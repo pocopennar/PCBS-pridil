@@ -31,7 +31,6 @@ def choix():
         return 'T'
     else  :
         print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
-        choix()
  </code></pre>
  
  ### Calcul des gains : fonction gains()
@@ -60,8 +59,7 @@ GainT =input("Choisir le montant du gain du partenaire qui trahit si l'autre coo
 PerteC =input("Choisir le montant de la perte du partenaire qui coopère si l'autre trahit : " )
 PerteT =input("Choisir le montant de la perte de chaque partenaire si les deux partenaires trahisent : " )
 Nbtours = input("Choisir le nombre de tours de jeu : "))
-scoreJ = 0 #Score du Joueur, nul au début du jeu
-scorePV = 0 #Score du partenaire Virtuel, nul au début du jeu
+scores = (0,0) #Scores du Joueur et du partenaire Virtuel, nuls au début du jeu
 n = 0 #indice des tours
 
 # début du jeu

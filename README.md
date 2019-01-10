@@ -7,13 +7,14 @@ Le nombre de tours du dilemme doit pouvoir être fixé par l’expérimentateur.
 La photo du partenaire  doit pouvoir être changée (il devrait être possible d’en télécharger de nouvelles).
 Les paramètres de gains et de pertes du dilemme doivent également pouvoir être programmable.
 Le partenaire virtuel (PV) jouera une stratégie élémentaire tit-for-tat.
+Les données sur les actions des joueurs doivent être collecté.
 L'objectif serait d'observer les variations du comportement des utilisateurs en fonction du faciès du partenaire.
 
 
 
 ## Fonctions
 
-_On a fait le choix de pré-définir des fonctions plutôt que d'utiliser des procédures avec d'éventuelles variables globales. La section présente expose donc l'esprit et la formalisation des fonctions qui serviront de base à un programme permettant de jouer un dilemme du prisonnier face à un PV jouant une stratégie 'Tit-for-Tat'._
+_La section présente expose donc l'esprit et la formalisation des fonctions qui serviront de base à un programme permettant de jouer un dilemme du prisonnier face à un PV jouant une stratégie 'Tit-for-Tat'._
 
 
 ### Action du joueur : fonction choix()

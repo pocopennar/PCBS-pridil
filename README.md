@@ -25,13 +25,15 @@ Elle pourra eventuellement être utilisée comme variable pour la détermination
 
 <pre><code>
 def choix():
-    action = input("Souhaitez vous coopérer (a) ou trahir (p) :") 
-    if action == 'a' :
-        return 'C'
-    elif action == 'p' :
-        return 'T'
-    else  :
-        print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
+    action = 'r' # action prend une valeur non significative qui permet de débuter la boucle while
+    while action != 'a' or action != 'p':
+        action = input("Souhaitez vous coopérer (a) ou trahir (p) :") 
+        if action == 'a' :
+            return 'C' # 'C' pour coopérer
+        elif action == 'p' :
+            return 'T' # 'T' pour trahir
+        else  : # Retour à la première instruction avec avertissement
+            print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
  </code></pre>
  
  ### Calcul des gains : fonction gains()

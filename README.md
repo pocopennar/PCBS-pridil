@@ -114,3 +114,8 @@ print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l
 
 
  </code></pre>
+
+
+## Version avec expyriment
+
+_Afin d'obtenir une interface de meilleure qualité, d'afficher des photos et de collecter les données, nous allons adapté le code pour utiliser la librairie __expyriment__._

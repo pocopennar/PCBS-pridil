@@ -134,9 +134,4 @@ for b in exp.blocks :
         
         exp.data.add([key, rt])  
         
-         
-# expyriment.stimuli.TextScreen("Scores Finaux", "Joueur : ", scoreJ, "Partenaire : ", scorePV).present()
-# kb.wait()    
-#expyriment.stimuli.TextScreen("Le jeu est terminé, merci d'avoir participer. Vous pouvez appelez l'expérimentateur.").present()   
-     
 expyriment.control.end()

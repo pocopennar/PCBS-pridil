@@ -75,7 +75,7 @@ def choix():
  </code></pre>
  
  
- ### Calcul des gains
+### Calcul des gains
  
  Prend en paramètre l'action choisie par le joueur, celle du PV et applique en fonction de ces derniers, la matrice des gains pour faire évoluer les scores.
  
@@ -92,7 +92,7 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
  </code></pre>
  
  
- ### Déroulement du jeu 1
+### Déroulement du jeu 1
  
  <pre><code>
  # Bloc de paramétrage  

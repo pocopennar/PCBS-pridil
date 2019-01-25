@@ -25,8 +25,8 @@ __Sommaire__
     - [Création des trials et du block](#création-des-trials-et-du-block)
     - [Déroulement du jeu](#déroulement-du-jeu)
 - [CONCLUSION](#conclusion)
-    - [Mon niveau initial](#mon_niveau-initial)
-    - [Ce que j'ai appris](#ce-que-j'ai-appris)
+    - [Mon niveau initial](#mon-niveau-initial)
+    - [Apprentissages lors du cours](#apprentissages-lors-du-cours)
     - [Regard sur le cours](#regard-sur-le-cours)
     
  Version expyriment du dilemme du prisonnier
@@ -156,7 +156,7 @@ _Nous allons adapter le code pour utiliser la bibliothèque __expyriment__. Cela
 Je n'avais jamais utilisé python avant le début de l'année. 
 J'avais fait des boucles et des fonctions simples sur Scilab en classe préparatoire.
 
-### Ce que j'ai appris
+### Apprentissages lors du cours
 
 La première partie de mon apprentissage s'est concentré sur la manipulation basique de python : l'apprentissage des commandes (+=, boucle for, def de fonction) et de l'organisation sur python (définition préalable des fonctions, leur utilisation dans le programme).
 

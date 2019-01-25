@@ -2,11 +2,11 @@
 
 ## Description du projet
 
-Je projette de réaliser un jeu du dilemme du prisonnier avec une interface utilisateur permettant de présenter des images afin de faire varier le visage des partenaires. L'objectif serait d'observer les variations du comportement des utilisateurs en fonction du faciès du partenaire.
+Je projette de réaliser un jeu du dilemme du prisonnier avec une interface utilisateur permettant de présenter des images afin de faire varier le visage des partenaires. L'objectif serait d'observer les variations du comportement des joueurs en fonction du faciès du partenaire.
 
-Le programme doit répondre à un certains nombre d'éxigences :
-- Le nombre de tours du dilemme es paramètres de gains et de pertes du dilemme doivent également pouvoir être fixés par l'expérimentateur au début du programme.
-- Le partenaire virtuel (PV) jouera une stratégie élémentaire tit-for-tat.
+Le programme doit répondre à un certain nombre d'éxigences :
+- Le nombre de tours du dilemme et les paramètres de gains et de pertes du dilemme doivent également pouvoir être fixés par l'expérimentateur au début du programme.
+- Le partenaire virtuel (PV) jouera une stratégie élémentaire 'Tit-for-Tat'.
 - Les données sur les actions des joueurs doivent pouvoir être collectées.
 
 
@@ -28,8 +28,6 @@ __Sommaire__
     - [Mon niveau initial](#mon-niveau-initial)
     - [Apprentissages lors du cours](#apprentissages-lors-du-cours)
     - [Regard sur le cours](#regard-sur-le-cours)
-    
- Version expyriment du dilemme du prisonnier
 
 <!-- markdown-toc end -->
 
@@ -37,11 +35,11 @@ __Sommaire__
 
 ## Un dilemme du prisonnier classique
 
-_La section présente propose un programme basique permettant de jouer un dilemme du prisonnier contre un partenaire virtuelle jouant une stratégie "Tit-for-Tat". Elle commence par l'exposition des fonctions qui seront utilisés puis présente le déroulement du jeu._
+_La section présente propose un programme basique permettant de jouer un dilemme du prisonnier sur plusieurs tours contre un partenaire virtuel jouant une stratégie "Tit-for-Tat". Elle commence par l'exposition des fonctions qui seront utilisées puis présente le déroulement du jeu._
 
 ### Paramétrage ou paramètre par défaut
 
-Le fonction parametrage demande  à l'expérimentateur s'il souhaite paramètrer lui-même l'expérience ou utiliser les paramètres par défaut.
+Le fonction parametrage demande à l'expérimentateur s'il souhaite paramètrer lui-même l'expérience ou utiliser les paramètres par défaut.
 
 <pre><code>
 def parametrage() :
@@ -59,7 +57,7 @@ def parametrage() :
 
 ### Action du joueur
 
-La fonction choix() doit demander au joueur de choisir entre les deux options : coopérer ou trahir.
+La fonction choix() demande au joueur de choisir entre les deux options : coopérer ou trahir.
 Ce choix déterminera le retour d'une valeur utilisée pour le calcul de l'attribution des points.
 Elle est utilisée comme variable pour la détermination de l'action future du PV.
 
@@ -171,7 +169,10 @@ Le paramétrage prend la même forme que dans le dilemme du prisonnier classique
 Il a lieu dès le début du programme car le nombre de tour de jeu doit être connu pour créer les trials.
 
 ### Initialisation et préparation des stimulis
- 
+
+On commence par créer  une expérience avec expyriment. On créer les différents stimulus dont nous avons besoin. La demande de choix entre coopérer et trahir, les deux résultats possibles du comportement du partenaire et la photo du partenaire. On vérifie que le lien vers la photo est correcte, sans quoi on renvoit un message d'erreur.
+
+
 <pre><code>
 ### Initialisation de l'expérience
 exp = expyriment.design.Experiment(name="Prisoner_dilemma")  
@@ -182,8 +183,6 @@ expyriment.control.initialize(exp)
 
 
 ### Creation des stimulis
-block = expyriment.design.Block(name="jeu")  
-
 
 stim1 = expyriment.stimuli.TextLine(text = "Désirez vous coopérer (a)  ou  trahir (p)")
 stim1.preload()
@@ -205,7 +204,12 @@ stimphoto.preload()
 
 
 ### Création des trials et du block
+
+En utilisant expyriment on créer le block de jeu. On va créer un nombre de 'trials' équivalent au nombre de tour grâce à une boucle 'for'. Chaque 'trial' contiendra les trois stimulus quatre stimulus précédents. On ajoute l'ensemble des 'trials' au block 'jeu'.
+
 <pre><code>
+block = expyriment.design.Block(name="jeu")  
+
 for i in range(Nbtours):
     trial = expyriment.design.Trial()
     trial.add_stimulus(stim1)
@@ -265,27 +269,27 @@ expyriment.control.end()
 
 ### Perspective de développement
 
-Plusieurs pistes de développement et d'amélioration du programme sont envisageable : 
+Plusieurs pistes de développement et d'amélioration du programme sont envisageables : 
  - Il faudrait faire évoluer l'interface pour que le visage du partenaire persiste malgré l'évolution des autres stimulis.
  - La matrice des gains pourrait être présentée au joueur au début de l'expérience.
  - Les scores pourraient être présents en permanence à l'écran.
- - Il faudrait faire évoluer le porgramme pour changer facilement le visage du partenaire à partir d'une bibliothèque de photos.
+ - Il faudrait faire évoluer le programme pour changer facilement le visage du partenaire à partir d'une bibliothèque de photos.
  
 ## CONCLUSION
 
 ### Mon niveau initial
 
 Je n'avais jamais utilisé python avant le début de l'année. 
-Je savais faire des boucles et des fonctions simples sur Scilab en classe préparatoire ECS.
+Je savais faire des boucles et des fonctions simples sur Scilab en classe préparatoire (ECS).
 
 
 ### Apprentissages lors du cours
 
-La première partie de mon apprentissage s'est concentré sur la manipulation basique de python : l'apprentissage des commandes (+=, boucle for, def de fonction) et de l'organisation sur python (définition préalable des fonctions, leur utilisation dans le programme).
+La première partie de mon apprentissage s'est concentrée sur la manipulation basique de Python : l'apprentissage des commandes (+=, boucle for, def de fonction) et de l'organisation sur python (définition préalable des fonctions, leur utilisation dans le programme).
 
 La deuxième partie a été centrée autour de la compréhension et de l'utilisation de la bibliothèque _expyriment_. J'ai appris à créer des trials et des blocks en comprennant leur imbrication. J'ai aussi appris à gérer les images sur python et à utiliser markdown.
 
-J'ai passé un temps incroyable face à des bugs divers simplement dû à un manque de rigueur dans la gestion des variables ou une mauvaise écriture : je pense y avoir grandement gagné en rigueur. J'ai finalement réaliser deux programmes qui constitue deux étapes dans mon apprentissage, j'ai jugé bon de laisser le premier ('dilemme du prisonnier classique') car c'est en le programmant que j'ai acquis les bases et que le second programme utilisant _expyriment_ en découle largement. 
+J'ai passé un temps incroyable face à des blocages simplement dûs à un manque de rigueur dans la gestion des variables ou une mauvaise écriture : je pense y avoir gagné en rigueur. J'ai finalement réaliser deux programmes qui constituent deux étapes dans mon apprentissage, j'ai jugé bon de laisser le premier ('dilemme du prisonnier classique') car c'est en le programmant que j'ai acquis les bases et le second programme utilisant _expyriment_ en découle largement. 
 
 
 ### Regard sur le cours

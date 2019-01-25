@@ -10,11 +10,22 @@ Le partenaire virtuel (PV) jouera une stratégie élémentaire tit-for-tat.
 Les données sur les actions des joueurs doivent être collecté.
 L'objectif serait d'observer les variations du comportement des utilisateurs en fonction du faciès du partenaire.
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Un dilemme du prisonnier classique](#un-dilemme-du-prisonnier-classique)
+    - [Paramétrage ou paramètre par défaut](#paramétrage-ou-paramètre-par-défaut)
+    - [Action du joueur](#action-du-joueur)
+    - [Calcul des gains](#calcul-des-gains)
 
 
-## Fonctions
+<!-- markdown-toc end -->
 
-_La section présente expose donc l'esprit et la formalisation des fonctions qui serviront de base à un programme permettant de jouer un dilemme du prisonnier face à un PV jouant une stratégie 'Tit-for-Tat'._
+
+
+## Un dilemme du prisonnier classique
+
+_La section présente propose un programme basique permettant de jouer un dilemme du prisonnier contre un partenaire virtuelle jouant une stratégie "Tit-for-Tat". Elle commence par l'exposition des fonctions qui seront utilisés puis présente le déroulement du jeu._
 
 ### Paramétrage ou paramètre par défaut : fonction parametrage()
 
@@ -116,6 +127,8 @@ print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l
  </code></pre>
 
 
-## Version avec expyriment
+## Version expyriment du dilemme du prisonnier
 
-_Afin d'obtenir une interface de meilleure qualité, d'afficher des photos et de collecter les données, nous allons adapté le code pour utiliser la librairie __expyriment__._
+_Nous allons adapté le code pour utiliser la bibliothèque __expyriment__. Cela devrait nous permettre de générer une interface utilisateur plus attrayante. Nous devons également mettre en place l'affichage de photos et la collecte de données._
+
+### 

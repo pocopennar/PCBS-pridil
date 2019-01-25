@@ -22,8 +22,8 @@ __Sommaire__
     - [Fonctions utilisées](#fonctions-utilisées)
     - [Paramétrage](#paramétrage)
     - [Initialisation et préparation des stimulis](#initialisation-et-préparation-des-stimulis)
-    - [Création des trials et du block](#creation-des-trials-et-du-block)
-    - [Déroulement du jeu](#deroulement-du-jeu)
+    - [Création des trials et du block](#création-des-trials-et-du-block)
+    - [Déroulement du jeu](#déroulement-du-jeu)
 - [CONCLUSION](#conclusion)
     
  Version expyriment du dilemme du prisonnier

@@ -19,6 +19,11 @@ __Sommaire__
     - [Calcul des gains](#calcul-des-gains)
     - [Déroulement du jeu](#déroulement-du-jeu)
 - [Version expyriment du dilemme du prisonnier](#version-expyriment-du-dilemme-du-prisonnier)
+    - [Fonctions utilisées](#fonctions-utilisées)
+    - [Paramétrage](#paramétrage)
+    - [Initialisation et préparation des stimulis](#initialisation-et-préparation-des-stimulis)
+    - [Création des trials et du block](#creation-des-trials-et-du-block)
+    - [Déroulement du jeu](#deroulement-du-jeu)
 - [CONCLUSION](#conclusion)
     
  Version expyriment du dilemme du prisonnier
@@ -84,7 +89,7 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
         return (PerteT, PerteT)
  </code></pre>
  
- ## Déroulement du jeu
+ ### Déroulement du jeu
  
  <pre><code>
  
@@ -133,10 +138,13 @@ print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l
 
 ## Version expyriment du dilemme du prisonnier
 
-_Nous allons adapté le code pour utiliser la bibliothèque __expyriment__. Cela devrait nous permettre de générer une interface utilisateur plus attrayante. Nous devons également mettre en place l'affichage de photos et la collecte de données._
+_Nous allons adapter le code pour utiliser la bibliothèque __expyriment__. Cela devrait nous permettre de générer une interface utilisateur plus attrayante. Nous devons également mettre en place l'affichage de photos et la collecte de données._
 
-### 
-
+### Fonctions utilisées
+### Paramétrage
+### Initialisation et préparation des stimulis
+### Création des trials et du block
+### Déroulement du jeu
 
 ## CONCLUSION
 

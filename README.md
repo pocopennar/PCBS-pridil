@@ -139,3 +139,19 @@ _Nous allons adapté le code pour utiliser la bibliothèque __expyriment__. Cela
 
 
 ## CONCLUSION
+
+### Mon niveau initial
+
+Je n'avais jamais utilisé python avant le début de l'année. 
+J'avais fait des boucles et des fonctions simples sur Scilab en classe préparatoire.
+
+### Ce que j'ai appris
+
+La première partie de mon apprentissage s'est concentré sur la manipulation basique de python : l'apprentissage des commandes (+=, boucle for, def de fonction) et de l'organisation sur python (définition préalable des fonctions, leur utilisation dans le programme).
+
+La deuxième partie a été centrée autour de la compréhension et de l'utilisation de la bibliothèque _expyriment_. 
+
+### Regard sur le cours
+
+L'équilibre est bon entre les exercices à faire chez soi et le retour sur ces exercices en cours. Néanmoins au moins l'un d'entre eux pourrait être obligatoire chaque semaine. Face à l'hétérogénéité du niveau de la classe, les exercices pourrait être de différents niveau, chacun rendant celui qui correspond le mieux à son niveau. 
+

@@ -1,5 +1,7 @@
 # PCBS-pridil
 
+https://pocopennar.github.io/PCBS-pridil/
+
 ## Description du projet
 
 Je projette de réaliser un jeu du dilemme du prisonnier avec une interface utilisateur permettant de présenter des images afin de faire varier le visage des partenaires. L'objectif serait d'observer les variations du comportement des joueurs en fonction du faciès du partenaire.

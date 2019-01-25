@@ -151,7 +151,7 @@ On modifie à la marge la fonction gain() du dilemme du prisonnier classique pou
  <pre><code>
 #fonction de gains
 # Prend en paramètre l'action choisie par le joueur, celle du partenaire virtuel et applique en fonction de ces derniers, la matrice des gains.       
-def gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT) : #ActionJ = action du joueur ; ActionPV = action du PV ; GainC = Gains si les deux partenaires coopèrent ; GainT = Gains du partenaire qui a trahi si l'autre à coopérer ; PerteT = Perte si les deux joueurs ont trahi ; PerteC = Perte du partenaire qui a coopéré quand l'autre a trahi. 
+def gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT) : 
     if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_q :
         return (GainC, GainC)
     if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_p:

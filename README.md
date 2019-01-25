@@ -121,7 +121,8 @@ n = 0 #indice des tours
 ActionPV = 'C' # Initialisation de l'action du PV : coopère au premier tour
 
 # Début du jeu
-print("Vous allez jouer avec un partenaire dont vous verez le visage")
+print("Bienvenue dans le monde du dilemme du prisonnier",
+        "Un partenaire de jeu va vous être présenté. Votre objectif sera de maximiser votre score. Vous pouvez presser 'a' pour choisir de coopérer, 'b' pour choisir de trahir")
 
 while n < Nbtours :
     n+=1
@@ -143,11 +144,123 @@ print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l
 
 _Nous allons adapter le code pour utiliser la bibliothèque __expyriment__. Cela devrait nous permettre de générer une interface utilisateur plus attrayante. Nous devons également mettre en place l'affichage de photos et la collecte de données._
 
-### Fonctions utilisées
+### Fonctions utilisées 
+
+On modifie à la marge la fonction gain() du dilemme du prisonnier classique pour l'adapter à expyriment. 
+
+ <pre><code>
+#fonction de gains
+# Prend en paramètre l'action choisie par le joueur, celle du partenaire virtuel et applique en fonction de ces derniers, la matrice des gains.       
+def gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT) : #ActionJ = action du joueur ; ActionPV = action du PV ; GainC = Gains si les deux partenaires coopèrent ; GainT = Gains du partenaire qui a trahi si l'autre à coopérer ; PerteT = Perte si les deux joueurs ont trahi ; PerteC = Perte du partenaire qui a coopéré quand l'autre a trahi. 
+    if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_q :
+        return (GainC, GainC)
+    if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_p:
+        return (PerteC, GainT)
+    if ActionJ== expyriment.misc.constants.K_p and ActionPV== expyriment.misc.constants.K_q :
+        return (GainT, PerteC)
+    if ActionJ== expyriment.misc.constants.K_p and ActionPV== expyriment.misc.constants.K_p:
+        return (PerteT, PerteT)    
+  </code></pre>
+  
+  On réutilisera également la fonction parametrage() du dilemme du prisonnier classique.
+            
 ### Paramétrage
+
+Le paramétrage prend la même forme que dans le dilemme du prisonnier classique. 
+Il a lieu dès le début du programme car le nombre de tour de jeu doit être connu pour créer les trials.
+
 ### Initialisation et préparation des stimulis
+ 
+<pre><code>
+### Initialisation de l'expérience
+exp = expyriment.design.Experiment(name="Prisoner_dilemma")  
+
+expyriment.control.set_develop_mode(on=True)
+
+expyriment.control.initialize(exp)
+
+
+### Creation des stimulis
+block = expyriment.design.Block(name="jeu")  
+
+
+stim1 = expyriment.stimuli.TextLine(text = "Désirez vous coopérer (a)  ou  trahir (p)")
+stim1.preload()
+stim2 = expyriment.stimuli.TextLine(text = "Votre partenaire coopère.")
+stim2.preload()
+stim3 = expyriment.stimuli.TextLine(text = "Votre partenaire trahie.")
+stim3.preload()
+
+imagefile = 'stimuli1.jpg'
+stim = os.path.join(STIMDIR, imagefile)
+if not os.path.isfile(stim):
+    print(f'{stim} introuvable' )
+    assert False
+    
+stimphoto = expyriment.stimuli.Picture(stim)
+stimphoto.preload()
+
+</code></pre>
+
+
 ### Création des trials et du block
+<pre><code>
+for i in range(Nbtours):
+    trial = expyriment.design.Trial()
+    trial.add_stimulus(stim1)
+    trial.add_stimulus(stim2)
+    trial.add_stimulus(stim3)
+    trial.add_stimulus(stimphoto)
+    block.add_trial(trial)
+
+exp.add_block(block)
+
+</code></pre>
+
 ### Déroulement du jeu
+
+<pre><code>
+### Initialisation des variables
+scoreJ = 0  #Score du Joueur, nul au début du jeu
+scorePV = 0  #Score du partenaire Virtuel, nul au début du jeu
+
+exp.add_data_variable_names(['key', 'rt'])
+
+### Lancement du jeu
+expyriment.control.start(skip_ready_screen = True)
+
+expyriment.stimuli.TextScreen("Bienvenue dans le monde du dilemme du prisonnier",
+        "Un partenaire de jeu va vous être présenté. Votre objectif sera de maximiser votre score. Vous pouvez presser 'a' pour choisir de coopérer, 'b' pour choisir de trahir").present()
+exp.keyboard.wait()
+
+for b in exp.blocks:
+    ActionPV = expyriment.misc.constants.K_q  # Initialisation de l'action du PV : coopère au premier
+    for t in b.trials :
+        stimphoto.present()
+        kb.wait()
+        
+        stim1.present()
+        key, rt = kb.wait([expyriment.misc.constants.K_q,
+                                     expyriment.misc.constants.K_p])
+
+        if ActionPV == expyriment.misc.constants.K_q : # Cas de coopération 
+            stim2.present()
+            kb.wait()
+           
+        if ActionPV ==  expyriment.misc.constants.K_p : # Cas de trahison
+            stim3.present() 
+            kb.wait()
+            
+        scoreJ+= gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[0] # on traite 'key' comme 'ActionJ'
+        scorePV += gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[1]
+        
+        ActionPV = key
+        
+        exp.data.add([key, rt])  
+        
+expyriment.control.end()
+
+</code></pre>
 
 ## CONCLUSION
 

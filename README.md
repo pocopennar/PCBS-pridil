@@ -95,8 +95,7 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
  ### Déroulement du jeu
  
  <pre><code>
- 
-# Bloc de paramétrage  
+ # Bloc de paramétrage  
 parametre = parametrage()
 
 if parametre == 'D' :
@@ -262,18 +261,30 @@ expyriment.control.end()
 
 </code></pre>
 
+### Perspective de développement
+
+Plusieurs pistes de développement et d'amélioration du programme sont envisageable : 
+ - Il faudrait faire évoluer l'interface pour que le visage du partenaire persiste malgré l'évolution des autres stimulis.
+ - La matrice des gains pourrait être présentée au joueur au début de l'expérience.
+ - Les scores pourraient être présents en permanence à l'écran.
+ - Il faudrait faire évoluer le porgramme pour changer facilement le visage du partenaire à partir d'une bibliothèque de photos.
+ 
 ## CONCLUSION
 
 ### Mon niveau initial
 
 Je n'avais jamais utilisé python avant le début de l'année. 
-J'avais fait des boucles et des fonctions simples sur Scilab en classe préparatoire.
+Je savais faire des boucles et des fonctions simples sur Scilab en classe préparatoire ECS.
+
 
 ### Apprentissages lors du cours
 
 La première partie de mon apprentissage s'est concentré sur la manipulation basique de python : l'apprentissage des commandes (+=, boucle for, def de fonction) et de l'organisation sur python (définition préalable des fonctions, leur utilisation dans le programme).
 
-La deuxième partie a été centrée autour de la compréhension et de l'utilisation de la bibliothèque _expyriment_. 
+La deuxième partie a été centrée autour de la compréhension et de l'utilisation de la bibliothèque _expyriment_. J'ai appris à créer des trials et des blocks en comprennant leur imbrication. J'ai aussi appris à gérer les images sur python et à utiliser markdown.
+
+J'ai passé un temps incroyable face à des bugs divers simplement dû à un manque de rigueur dans la gestion des variables ou une mauvaise écriture : je pense y avoir grandement gagné en rigueur. J'ai finalement réaliser deux programmes qui constitue deux étapes dans mon apprentissage, j'ai jugé bon de laisser le premier ('dilemme du prisonnier classique') car c'est en le programmant que j'ai acquis les bases et que le second programme utilisant _expyriment_ en découle largement. 
+
 
 ### Regard sur le cours
 

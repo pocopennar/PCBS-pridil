@@ -11,13 +11,17 @@ Les données sur les actions des joueurs doivent être collecté.
 L'objectif serait d'observer les variations du comportement des utilisateurs en fonction du faciès du partenaire.
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
-**Table of Contents**
+__Sommaire__
 
 - [Un dilemme du prisonnier classique](#un-dilemme-du-prisonnier-classique)
     - [Paramétrage ou paramètre par défaut](#paramétrage-ou-paramètre-par-défaut)
     - [Action du joueur](#action-du-joueur)
     - [Calcul des gains](#calcul-des-gains)
-
+    - [Déroulement du jeu](#déroulement-du-jeu)
+- [Version expyriment du dilemme du prisonnier](#version-expyriment-du-dilemme-du-prisonnier)
+- [CONCLUSION](#conclusion)
+    
+ Version expyriment du dilemme du prisonnier
 
 <!-- markdown-toc end -->
 
@@ -27,7 +31,7 @@ L'objectif serait d'observer les variations du comportement des utilisateurs en 
 
 _La section présente propose un programme basique permettant de jouer un dilemme du prisonnier contre un partenaire virtuelle jouant une stratégie "Tit-for-Tat". Elle commence par l'exposition des fonctions qui seront utilisés puis présente le déroulement du jeu._
 
-### Paramétrage ou paramètre par défaut : fonction parametrage()
+### Paramétrage ou paramètre par défaut
 
 Le fonction parametrage demande  à l'expérimentateur s'il souhaite paramètrer lui-même l'expérience ou utiliser les paramètres par défaut.
 
@@ -45,7 +49,7 @@ def parametrage() :
  </code></pre>
 
 
-### Action du joueur : fonction choix()
+### Action du joueur
 
 La fonction choix() doit demander au joueur de choisir entre les deux options : coopérer ou trahir.
 Ce choix déterminera le retour d'une valeur utilisée pour le calcul de l'attribution des points.
@@ -64,7 +68,7 @@ def choix():
             print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
  </code></pre>
  
- ### Calcul des gains : fonction gains()
+ ### Calcul des gains
  
  Prend en paramètre l'action choisie par le joueur, celle du PV et applique en fonction de ces derniers, la matrice des gains pour faire évoluer les scores.
  
@@ -132,3 +136,6 @@ print("Merci d'avoir participer. L'expérience est terminée, veuillez appeler l
 _Nous allons adapté le code pour utiliser la bibliothèque __expyriment__. Cela devrait nous permettre de générer une interface utilisateur plus attrayante. Nous devons également mettre en place l'affichage de photos et la collecte de données._
 
 ### 
+
+
+## CONCLUSION

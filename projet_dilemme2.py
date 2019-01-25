@@ -1,10 +1,23 @@
 # -*- coding: utf-8 -*-
-#Ce programme vise à créer une interface pour paramétrer et jouer au dilemme du prisonnier
+#Ce programme vise à créer une interface via expyriment pour jouer au dilemme du prisonnier
 
+
+import random
 import expyriment
 from  expyriment.stimuli import Picture
 
-
+# fonction de gains
+# Prend en paramètre l'action choisie par le joueur, celle du partenaire virtuel et applique en fonction de ces derniers, la matrice des gains.       
+def gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT) : #ActionJ = action du joueur ; ActionPV = action du PV ; GainC = Gains si les deux partenaires coopèrent ; GainT = Gains du partenaire qui a trahi si l'autre à coopérer ; PerteT = Perte si les deux joueurs ont trahi ; PerteC = Perte du partenaire qui a coopéré quand l'autre a trahi. 
+    if ActionJ== 'a' and ActionPV== 'a' :
+        return (GainC, GainC)
+    if ActionJ== 'a' and ActionPV== 'p':
+        return (PerteC, GainT)
+    if ActionJ== 'p' and ActionPV== 'a' :
+        return (GainT, PerteC)
+    if ActionJ== 'p' and ActionPV== 'p':
+        return (PerteT, PerteT)
+    
 
 # fonction de choix parametrage par defaut
 # Demande à l'expérimentateur si il souhaite utiliser les paramètres par défaut ou paramétrer lui-même l'expérience.
@@ -41,43 +54,67 @@ if parametre == 'P':
 # Initialisation
 exp = expyriment.design.Experiment(name="Prisoner_dilemma")  # create an Experiment object
 
-# Set develop mode. Comment for real experiment
+## Set develop mode. Comment for real experiment
 expyriment.control.set_develop_mode(on=True)
 
 expyriment.control.initialize(exp)
 
 
-# Creation du stimuli et des trials
-
-instructions = expyriment.stimuli.TextScreen("Bienvenue dans le monde du dilemme du prisonnier",
-        "Un partenaire de jeu va vous être présenté. Votre objectif sera de maximiser votre score. Vous pouvez presser 'a' pour choisir de coopérer, 'b' pour choisir de trahir")
+## Creation des stimulis et des trials
 
 block = expyriment.design.Block(name="jeu")  # create a block (which will consists in a series of trials)
 
 
-stim = expyriment.stimuli.TextLine(text="coopérer ou trahir")
-stim.preload()
-
+stim1 = expyriment.stimuli.TextLine(text = "coopérer ou trahir")
+stim1.preload()
+stim2 = expyriment.stimuli.TextLine(text = "Votre partenaire coopère.")
+stim2.preload()
+stim3 = expyriment.stimuli.TextLine(text = "Votre partenaire trahie.")
+stim3.preload()
 
 for i in range(Nbtours):
     trial = expyriment.design.Trial()
-    trial.add_stimulus(stim)
+    trial.add_stimulus(stim1)
+    trial.add_stimulus(stim2)
+    trial.add_stimulus(stim3)
     block.add_trial(trial)
 
 exp.add_block(block)
 
-kb = exp.keyboard  # response device
-exp.data_variable_names(['key', 'rt'])
+kb = exp.keyboard  
+
+## Gestion des variables
+scoreJ = 0 #Score du Joueur, nul au début du jeu
+scorePV = 0 #Score du partenaire Virtuel, nul au début du jeu
+n = 0 #indice des tours
+
 
 # Lancement du jeu
-expyriment.control.start()
+    
+## Participant    
+expyriment.control.start(skip_ready_screen = True)
+
+expyriment.stimuli.TextScreen("Bienvenue dans le monde du dilemme du prisonnier",
+        "Un partenaire de jeu va vous être présenté. Votre objectif sera de maximiser votre score. Vous pouvez presser 'a' pour choisir de coopérer, 'b' pour choisir de trahir").present()
+exp.keyboard.wait()
 
 for b in exp.blocks:
+    key = 0
+    ActionPV = 113 # Initialisation de l'action du PV : coopère au premier
     for t in b.trials :
-        for s in t.stimuli:
-            s.present()
-        key, rt =kb.wait([expyriment.misc.constants.K_a,
-                                     expyriment.misc.constants.K_p]
-        exp.data.add([key, rt])
+        stim1.present()
+        key = kb.wait([expyriment.misc.constants.K_q,
+                                     expyriment.misc.constants.K_p])
 
+        if ActionPV == 113 : # valeur constant q
+            stim2.present()
+            exp.keyboard.wait() 
+        if ActionPV ==  112 : # valeur constant p
+            stim3.present() 
+            exp.keyboard.wait()
+            
+        
+        ActionPV = key
+        
+      
 expyriment.control.end()   

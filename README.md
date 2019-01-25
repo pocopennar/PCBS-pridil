@@ -25,6 +25,9 @@ __Sommaire__
     - [Création des trials et du block](#création-des-trials-et-du-block)
     - [Déroulement du jeu](#déroulement-du-jeu)
 - [CONCLUSION](#conclusion)
+    - [Mon niveau initial](#mon_niveau-initial)
+    - [Ce que j'ai appris](#ce-que-j'ai-appris)
+    - [Regard sur le cours](#regard-sur-le-cours)
     
  Version expyriment du dilemme du prisonnier
 

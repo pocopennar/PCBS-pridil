@@ -11,13 +11,13 @@ STIMDIR = "stimuli"
 # fonction de gains
 # Prend en paramètre l'action choisie par le joueur, celle du partenaire virtuel et applique en fonction de ces derniers, la matrice des gains.       
 def gains(ActionJ, ActionPV, GainC, GainT, PerteC, PerteT) : #ActionJ = action du joueur ; ActionPV = action du PV ; GainC = Gains si les deux partenaires coopèrent ; GainT = Gains du partenaire qui a trahi si l'autre à coopérer ; PerteT = Perte si les deux joueurs ont trahi ; PerteC = Perte du partenaire qui a coopéré quand l'autre a trahi. 
-    if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_q :
+    if ActionJ == expyriment.misc.constants.K_q and ActionPV == expyriment.misc.constants.K_q :
         return (GainC, GainC)
-    if ActionJ== expyriment.misc.constants.K_q and ActionPV== expyriment.misc.constants.K_p:
+    if ActionJ == expyriment.misc.constants.K_q and ActionPV == expyriment.misc.constants.K_p :
         return (PerteC, GainT)
-    if ActionJ== expyriment.misc.constants.K_p and ActionPV== expyriment.misc.constants.K_q :
+    if ActionJ == expyriment.misc.constants.K_p and ActionPV == expyriment.misc.constants.K_q :
         return (GainT, PerteC)
-    if ActionJ== expyriment.misc.constants.K_p and ActionPV== expyriment.misc.constants.K_p:
+    if ActionJ == expyriment.misc.constants.K_p and ActionPV == expyriment.misc.constants.K_p :
         return (PerteT, PerteT)
     
 
@@ -63,7 +63,7 @@ expyriment.control.initialize(exp)
 
 
 ### Creation des stimulis et des trials
-block = expyriment.design.Block(name="jeu")  
+block = expyriment.design.Block(name = "jeu")  
 
 
 stim1 = expyriment.stimuli.TextLine(text = "Désirez vous coopérer (a)  ou  trahir (p)")
@@ -107,36 +107,36 @@ expyriment.control.start(skip_ready_screen = True)
 
 expyriment.stimuli.TextScreen("Bienvenue dans le monde du dilemme du prisonnier",
         "Un partenaire de jeu va vous être présenté. Votre objectif sera de maximiser votre score. Vous pouvez presser 'a' pour choisir de coopérer, 'b' pour choisir de trahir").present()
-exp.keyboard.wait()
+kb.wait()
 
-for b in exp.blocks:
+for b in exp.blocks :
     ActionPV = expyriment.misc.constants.K_q  # Initialisation de l'action du PV : coopère au premier
     for t in b.trials :
         stimphoto.present()
-        exp.keyboard.wait()
+        kb.wait()
+        
         stim1.present()
         key, rt = kb.wait([expyriment.misc.constants.K_q,
                                      expyriment.misc.constants.K_p])
 
         if ActionPV == expyriment.misc.constants.K_q : # Cas de coopération 
             stim2.present()
-            exp.keyboard.wait()
+            kb.wait()
            
         if ActionPV ==  expyriment.misc.constants.K_p : # Cas de trahison
             stim3.present() 
-            exp.keyboard.wait()
+            kb.wait()
             
-        scoreJ+= gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[0]
+        scoreJ+= gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[0] # on traite 'key' comme 'ActionJ'
         scorePV += gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[1]
-        
-        exp.data.add([key, rt])  
-           
         
         ActionPV = key
         
+        exp.data.add([key, rt])  
+        
          
-# expyriment.stimuli.TextScreen("Scores Finaux", "Joueur : ", scoreJ, "Partenaire : ", scorePV,
-     #   "Le jeu est terminé, merci d'avoir participer. Vous pouvez appelez l'expérimentateur.").present()   
+# expyriment.stimuli.TextScreen("Scores Finaux", "Joueur : ", scoreJ, "Partenaire : ", scorePV).present()
+# kb.wait()    
+#expyriment.stimuli.TextScreen("Le jeu est terminé, merci d'avoir participer. Vous pouvez appelez l'expérimentateur.").present()   
      
 expyriment.control.end()
-        

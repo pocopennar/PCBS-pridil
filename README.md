@@ -17,13 +17,13 @@ __Sommaire__
     - [Paramétrage ou paramètre par défaut](#paramétrage-ou-paramètre-par-défaut)
     - [Action du joueur](#action-du-joueur)
     - [Calcul des gains](#calcul-des-gains)
-    - [Déroulement du jeu](#déroulement-du-jeu)
+    - [Déroulement du jeu 1](#déroulement-du-jeu-1)
 - [Version expyriment du dilemme du prisonnier](#version-expyriment-du-dilemme-du-prisonnier)
     - [Fonctions utilisées](#fonctions-utilisées)
     - [Paramétrage](#paramétrage)
     - [Initialisation et préparation des stimulis](#initialisation-et-préparation-des-stimulis)
     - [Création des trials et du block](#création-des-trials-et-du-block)
-    - [Déroulement du jeu](#déroulement-du-jeu)
+    - [Déroulement du jeu 2](#déroulement-du-jeu-2)
 - [CONCLUSION](#conclusion)
     - [Mon niveau initial](#mon-niveau-initial)
     - [Apprentissages lors du cours](#apprentissages-lors-du-cours)
@@ -94,7 +94,7 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
  </code></pre>
  
  
- ### Déroulement du jeu
+ ### Déroulement du jeu 1
  
  <pre><code>
  # Bloc de paramétrage  
@@ -218,7 +218,7 @@ exp.add_block(block)
 
 </code></pre>
 
-### Déroulement du jeu
+### Déroulement du jeu 2
 
 <pre><code>
 ### Initialisation des variables

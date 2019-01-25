@@ -76,6 +76,7 @@ def choix():
             print("Merci de n'utiliser que les touche 'a' et 'p' du clavier") 
  </code></pre>
  
+ 
  ### Calcul des gains
  
  Prend en paramètre l'action choisie par le joueur, celle du PV et applique en fonction de ces derniers, la matrice des gains pour faire évoluer les scores.
@@ -91,6 +92,7 @@ def gains(ActionJ, ActionPV, GainC, GainT, PerteT, PerteC) :
     if ActionJ== 'T' and ActionPV== 'T':
         return (PerteT, PerteT)
  </code></pre>
+ 
  
  ### Déroulement du jeu
  

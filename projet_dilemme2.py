@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
-#Ce programme vise à créer une interface via expyriment pour jouer au dilemme du prisonnier
+#Ce programme vise à créer une interface pour paramétrer et jouer au dilemme du prisonnier
 
 
 import random
-import expyriment
+import expyriment, os
 from  expyriment.stimuli import Picture
+
+path = "C:/Users/cocor/Documents/PCBS/"
+os.chdir(path)
+
 
 # fonction de gains
 # Prend en paramètre l'action choisie par le joueur, celle du partenaire virtuel et applique en fonction de ces derniers, la matrice des gains.       
@@ -65,18 +69,24 @@ expyriment.control.initialize(exp)
 block = expyriment.design.Block(name="jeu")  # create a block (which will consists in a series of trials)
 
 
-stim1 = expyriment.stimuli.TextLine(text = "coopérer ou trahir")
+stim1 = expyriment.stimuli.TextLine(text = "Désirez vous coopérer (a)  ou  trahir (p)")
 stim1.preload()
 stim2 = expyriment.stimuli.TextLine(text = "Votre partenaire coopère.")
 stim2.preload()
 stim3 = expyriment.stimuli.TextLine(text = "Votre partenaire trahie.")
 stim3.preload()
 
+#imagefile = 'stimuli/stimuli1.jpg'
+#stimphoto = expyriment.stimuli.Picture(imagefile)
+#stimphoto.preload()
+
+
 for i in range(Nbtours):
     trial = expyriment.design.Trial()
     trial.add_stimulus(stim1)
     trial.add_stimulus(stim2)
     trial.add_stimulus(stim3)
+ #   trial.add_stimulus(stimphoto)
     block.add_trial(trial)
 
 exp.add_block(block)
@@ -84,9 +94,8 @@ exp.add_block(block)
 kb = exp.keyboard  
 
 ## Gestion des variables
-scoreJ = 0 #Score du Joueur, nul au début du jeu
-scorePV = 0 #Score du partenaire Virtuel, nul au début du jeu
-n = 0 #indice des tours
+scoreJ = 0  #Score du Joueur, nul au début du jeu
+scorePV = 0  #Score du partenaire Virtuel, nul au début du jeu
 
 
 # Lancement du jeu
@@ -99,22 +108,25 @@ expyriment.stimuli.TextScreen("Bienvenue dans le monde du dilemme du prisonnier"
 exp.keyboard.wait()
 
 for b in exp.blocks:
-    key = 0
-    ActionPV = 113 # Initialisation de l'action du PV : coopère au premier
+    ActionPV = expyriment.misc.constants.K_q # Initialisation de l'action du PV : coopère au premier
     for t in b.trials :
+      #  stimphoto.present()
         stim1.present()
-        key = kb.wait([expyriment.misc.constants.K_q,
+        key, rt = kb.wait([expyriment.misc.constants.K_q,
                                      expyriment.misc.constants.K_p])
+        print(key)
 
-        if ActionPV == 113 : # valeur constant q
+        if ActionPV == expyriment.misc.constants.K_q : # Cas de coopération 
             stim2.present()
-            exp.keyboard.wait() 
-        if ActionPV ==  112 : # valeur constant p
+            exp.keyboard.wait()
+           
+        if ActionPV ==  expyriment.misc.constants.K_p : # Cas de trahison
             stim3.present() 
             exp.keyboard.wait()
-            
+           
         
         ActionPV = key
+            
         
       
-expyriment.control.end()   
+expyriment.control.end()

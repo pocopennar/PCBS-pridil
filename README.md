@@ -186,12 +186,8 @@ expyriment.control.initialize(exp)
 
 ### Creation des stimulis
 
-stim1 = expyriment.stimuli.TextLine(text = "Désirez vous coopérer (a)  ou  trahir (p)")
+stim1 = expyriment.stimuli.TextLine("Désirez vous coopérer (a)  ou  trahir (p)")
 stim1.preload()
-stim2 = expyriment.stimuli.TextLine(text = "Votre partenaire coopère.")
-stim2.preload()
-stim3 = expyriment.stimuli.TextLine(text = "Votre partenaire trahie.")
-stim3.preload()
 
 imagefile = 'stimuli1.jpg'
 stim = os.path.join(STIMDIR, imagefile)
@@ -210,13 +206,11 @@ stimphoto.preload()
 En utilisant expyriment on créer le block de jeu. On va créer un nombre de 'trials' équivalent au nombre de tour grâce à une boucle 'for'. Chaque 'trial' contiendra les trois stimulus quatre stimulus précédents. On ajoute l'ensemble des 'trials' au block 'jeu'.
 
 <pre><code>
-block = expyriment.design.Block(name="jeu")  
+block = expyriment.design.Block(name="jeu")
 
 for i in range(Nbtours):
     trial = expyriment.design.Trial()
     trial.add_stimulus(stim1)
-    trial.add_stimulus(stim2)
-    trial.add_stimulus(stim3)
     trial.add_stimulus(stimphoto)
     block.add_trial(trial)
 
@@ -250,12 +244,12 @@ for b in exp.blocks:
         key, rt = kb.wait([expyriment.misc.constants.K_q,
                                      expyriment.misc.constants.K_p])
 
-        if ActionPV == expyriment.misc.constants.K_q : # Cas de coopération 
-            stim2.present()
+         if ActionPV == expyriment.misc.constants.K_q : # Cas de coopération 
+            expyriment.stimuli.TextScreen("Votre partenaire coopère.", "Votre score : %s    Score de votre partenaire : %s"%(scoreJ, scorePV) ).present()
             kb.wait()
            
         if ActionPV ==  expyriment.misc.constants.K_p : # Cas de trahison
-            stim3.present() 
+            expyriment.stimuli.TextScreen("Votre partenaire trahie.", "Votre score : %s    Score de votre partenaire : %s"%(scoreJ, scorePV) ).present()
             kb.wait()
             
         scoreJ+= gains(key, ActionPV, GainC, GainT, PerteC, PerteT)[0] # on traite 'key' comme 'ActionJ'
@@ -265,6 +259,9 @@ for b in exp.blocks:
         
         exp.data.add([key, rt])  
         
+expyriment.stimuli.TextScreen("Votre score final : %s    Score de votre partenaire : %s" %(scoreJ, scorePV), "Le jeu est terminé. Merci d'avoir participer. Vous pouvez appelez l'expérimentateur.").present()   
+kb.wait()
+
 expyriment.control.end()
 
 </code></pre>

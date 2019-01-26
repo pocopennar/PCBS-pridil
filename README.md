@@ -9,7 +9,9 @@ Je projette de réaliser un jeu du dilemme du prisonnier avec une interface util
 Le programme doit répondre à un certain nombre d'éxigences :
 - Le nombre de tours du dilemme et les paramètres de gains et de pertes du dilemme doivent également pouvoir être fixés par l'expérimentateur au début du programme.
 - Le partenaire virtuel (PV) jouera une stratégie élémentaire 'Tit-for-Tat'.
+- Les scores doivent être présentés au joueur.
 - Les données sur les actions des joueurs doivent pouvoir être collectées.
+
 
 
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
@@ -293,5 +295,5 @@ J'ai passé un temps incroyable face à des blocages simplement dûs à un manqu
 
 ### Regard sur le cours
 
-L'équilibre est bon entre les exercices à faire chez soi et le retour sur ces exercices en cours. Néanmoins au moins l'un d'entre eux pourrait être obligatoire chaque semaine. Face à l'hétérogénéité du niveau de la classe, les exercices pourrait être de différents niveau, chacun rendant celui qui correspond le mieux à son niveau. 
+L'équilibre est bon entre les exercices à faire chez soi et le retour sur ces exercices en cours. Néanmoins au moins l'un d'entre eux pourrait être obligatoire chaque semaine. Face à l'hétérogénéité du niveau de la classe, les exercices pourrait être de différents niveau, chacun rendant celui qui correspond le mieux à son niveau.
 
